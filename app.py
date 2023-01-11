@@ -1,15 +1,27 @@
 # import necessary libraries
-from flask import Flask, render_template
+from flask import Flask, jsonify,  render_template
+from sqlalchemy import create_engine, inspect
+
+from config import username, password, host, port, database_name
+
+
+app = Flask(__name__)
+engine = create_engine(f"postgresql://{username}:{password}@{host}:{port}/{database_name}")
 
 # create instance of Flask app
-app = Flask(__name__)
+#appusername = Flask(__name__)
 
+@app.route("/api/yr_visitors.json")
+def yr_visitors():
+    results=engine.execute("select * from yr_visitors;")
+    return jsonify([dict(x) for x in results])
 
-# create route that renders index.html template
-@app.route("/")
-def echo():
-    return render_template("index.html", text="Check out visiting YellowStone National Park")
+@app.route("/api/sum_visitors.json")
+def sum_visitors():
+    results=engine.execute("select * from sum_visitors;")
+    return jsonify([dict(x) for x in results])
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/api/lodge_ovn.json")
+def lodge_ovn():
+    results=engine.execute("select * from lodge_ovn;")
+    return jsonify([dict(x) for x in results])
