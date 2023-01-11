@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+      
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yellowstone National Park</title>
+    <link rel=""stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+        <!-- adding in a background video using Bideo -->
+        <div id="container">
+            <video autoplay muted loop>
+              <source src="http://ak4.picdn.net/shutterstock/videos/4170274/preview/stock-footage-beautiful-girl-lying-on-the-meadow-and-dreaming-enjoy-nature-close-up-slow-motion-footage.mp4" type="video/mp4">
+            </video>
+            <div id="overlay"></div>
+          </div>
+
+    <div class="container">
+        <div class="row">
+           <div class="col-md-12 jumbotron text-center">
+            <style> {text-align: center}</style>
+             <h1>Yellowstone Visitation Records</h1>
+            
+             <p>Select different years from the EXTRA TEXT HERE</p>
+            </div>
+           </div> 
+           <div class="row">
+                <div class="col=md-2">
+                    <div class="well">
+                        <h5>Year:</h5>
+                        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                    </div>
+                    <div class="pannel pannel-primary">
+                        <div class="pannel-heading">
+                            <h3 class="pannel-title">ENTER TEXT</h3>
+                        </div>
+                        <div id="sample-metadata" class="pannel-body"></div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div id="guage"></div>
+                </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12">
+                <div id="bubble"></div>
+            </div>
+           </div>
+           </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https"
+</body>
+
+
+</html>
