@@ -1,0 +1,24 @@
+/* Adding in styling for our Bideo Background */
+* {
+    margin: 0; padding: 0;
+  }
+  
+  #container {
+    overflow: hidden;
+    height: 400px;
+    background: #edeae8;
+    position: relative;
+  }
+  
+  video {
+    position: absolute;
+    left: 70%;
+    transform: translateX(-50%);
+    top: 0;
+    #overlay {
+        position: absolute;
+        top: 0; right: 0; left: 0; bottom: 0;
+        
+        background: rgba(0,0,0,0.5);
+      }
+  }
