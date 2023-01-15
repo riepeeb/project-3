@@ -1,0 +1,139 @@
+Created Database yellowstone_db
+
+Created 3 tables to store the data from each csv file.
+
+  1. Annual Park Recreation Visitation(1904 - Last Calendar Year).csv =>  table yr_visitors
+  2. Overnight Stays(1979 - Last Calendar Year).csv => table lodge_ovn
+  3. Summary of Visitor Use By MOnth and Year(1979 - Last Calendar Year).csv => table sum_visitors
+
+
+create table yr_visitors (
+year int primary key,
+recreationvisitors bigint
+ );
+
+create table lodge_ovn (
+year int primary key,
+concessionerlodgers int,
+concessionercampers int,
+tentcampers int,
+rvcampers int,
+backcountrycampers int,
+miscellaneouscampers int
+)
+
+
+create table sum_visitors (
+year int, 
+month varchar,
+recreationvisitors bigint,
+nonrecreationvisitors int,
+recreationhours bigint,
+nonrecreationhours bigint,	
+tentcampers int,
+rvcampers int,
+totalovernightstays int
+);
+
+NOTE: this table did not have an index as year would have had to have a composite index.
+We have not learned this in posgreSQL; had to remove the initial index created or would have had duplicate years.
+
+
+Proving Dake's Observations:
+
+select sum(recreationvisitors) from yr_visitors 
+where year = 1904;  result = 13727
+ 
+
+select sum(recreationvisitors) from yr_visitors 
+where year = 1979;  result = 1892908
+
+select sum(recreationvisitors) from yr_visitors 
+where year = 2021;  result = 4860242
+
+ 
+select cast(avg(backcountrycampers) as int) from lodge_ovn;  
+                    result = 40515
+
+select sum(concessionerlodgers) as hotel,
+	sum(tentcampers) as camping, 
+	sum(rvcampers) as rv from lodge_ovn; 
+                                
+
+                     result = "hotel"	"camping"	"rv"
+					24461263	5783994	7026066
+
+select sum(totalovernightstays) as June from sum_visitors where month = 'June';   
+                     
+                    	"june"
+				11095381 
+select sum(totalovernightstays) as July from sum_visitors where month = 'July'; 
+
+				
+				"july"
+				15955259
+
+select sum(totalovernightstays) as Aug from sum_visitors where month = 'August'; 
+                     
+             		"aug"
+				14569990
+
+
+
+select sum(totalovernightstays) as April from sum_visitors where month = 'April';
+
+ 				"april"
+				68985
+
+select sum(totalovernightstays) as Nov from sum_visitors where month = 'November'; 
+
+				"nov"
+				31322
+
+select month, sum(totalovernightstays) as sum from  sum_visitors
+group by month  
+order by sum desc;
+
+"July"	15955259
+"August"	14569990
+"June"	11095381
+"September"	7897392
+"May"	      2581076
+"October"	1174289
+"February"	411519
+"January"	359441
+"December"	201123
+"March"	122157
+"April"	68985
+"November"	31322 
+
+
+Sharing the database information as Flask api
+
+@app.route("/api/yr_visitors.json")
+def yr_visitors():
+    results=engine.execute("select * from yr_visitors;")
+    return jsonify([dict(x) for x in results])
+
+@app.route("/api/sum_visitors.json")
+def sum_visitors():
+    results=engine.execute("select * from sum_visitors;")
+    return jsonify([dict(x) for x in results])
+
+@app.route("/api/lodge_ovn.json")
+def lodge_ovn():
+    results=engine.execute("select * from lodge_ovn;")
+    return jsonify([dict(x) for x in results])
+
+
+However since the database and the api are local a folder was created called api docs
+With three json files for the team to utilize.
+
+Folder   api data
+
+yr_visitors.json
+lodge_ovn.json
+sum_visitors.json
+
+
+
