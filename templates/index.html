@@ -8,7 +8,48 @@
   <title>Templates 101</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-
+<body>
+  <header>
+      <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container">
+              <a class="navbar-brand" href="./static/js/summary.js">Yellowstone National Park</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent"
+                      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                          <a class="nav-link {{pages['summary']}}" aria-current="page" href="./static/js/summary.js">Summary</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link {{pages['map']}}" href="./static/js/map.js">Map</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link {{pages['about']}}" href="./static/js/base.js">About</a>
+                      </li>
+                  </ul>
+                  <a id="github-link" href="https://riepeeb.github.io/project-3/" target="_blank" rel="noreferrer">
+                      <button class="btn" type="submit">
+                          <i class="bi bi-github"></i>
+                      </button>
+                  </a>
+                  <button id="light-mode" class="btn hide" type="submit">
+                      <i class="bi bi-brightness-high-fill"></i>
+                  </button>
+                  <button id="dark-mode" class="btn" type="submit">
+                      <i class="bi bi-moon-fill"></i>
+                  </button>
+              </div>
+          </div>
+      </nav>
+      <div class="container">
+          <div class="header text-center">
+              {% block header %}{% endblock %}
+          </div>
+      </div>
+  </header>
 <body>
   <div class="container">
 
@@ -18,6 +59,12 @@
     </div>
 
   </div>
+
+  <script src="./static/js/base.js"></script>
+  <script src="./static/js/bideo.js"></script>
+  <script src="./static/js/comparison.js"></script>
+  <script src="./static/js/summary.js"></script>
+  <script src="./static/js/map.js"></script>
 </body>
 
 </html>
