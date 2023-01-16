@@ -1,3 +1,4 @@
+d3.select("#aggregate-function").on("change", handleChange)
 const url = "./../API_Data/lodge_ovn.json"; 
 function plotCharts(aggregateFunction) 
     d3.json(url).then(data => {
@@ -72,7 +73,7 @@ function plotCharts(aggregateFunction)
     (() => {
         plotCharts("mean")
     })()
-    
+
     function DrawBubblePlot(url){
     
         d3.json(url).then(data=> {
