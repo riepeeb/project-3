@@ -1,0 +1,9 @@
+{
+    "globals": {
+      "data": true,
+      "d3": true
+    },
+    "rules": {
+      "arrow-body-style": ["error", "never"]
+    }
+  }
