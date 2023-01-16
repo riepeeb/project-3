@@ -35,16 +35,18 @@
             </span>
         </a>
     </div>
-    <script src="./static/js/summary.js"></script>
-
     <div class="container">
         <div class="header text-center">
-            {% block header %}{% endblock %}
         </div>
     </div>
 </header>
 <main class="container">
     {% block content %}{% endblock %}
 </main>
+<div class="plot" id="summary-line-plot"></div>
+    </div>
+    <div class="row">
+    </div>
+    <script src="./static/js/summary.js"></script>
 </body>
 </html>
