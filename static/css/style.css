@@ -1,24 +1,43 @@
-/* Adding in styling for our Bideo Background */
-* {
-    margin: 0; padding: 0;
-  }
-  
-  #container {
-    overflow: hidden;
-    height: 400px;
-    background: #edeae8;
-    position: relative;
-  }
-  
-  video {
-    position: absolute;
-    left: 70%;
-    transform: translateX(-50%);
-    top: 0;
-    #overlay {
-        position: absolute;
-        top: 0; right: 0; left: 0; bottom: 0;
-        
-        background: rgba(0,0,0,0.5);
-      }
-  }
+.menu{
+  background-color: darkolivegreen;
+  padding: 10px;;
+  display: flex;
+  gap: 5px;
+  border-radius: 2px;
+}
+.menu-option{
+  padding: 10px;
+  border: 1px solid darkgray;
+  background-color: lightgrey;
+  width:100px;
+  border-radius: 2px;
+  text-decoration: none;
+
+}
+
+.menu-item{
+  color:#282828;
+}
+
+.content{
+  padding: 10px;
+  color:#282828;
+
+}
+
+.title{
+  color:#282828;
+  margin: auto;
+  width:35%;
+
+}
+
+.page-data{
+  color:#282828;
+
+}
+
+.page{
+  padding: 0;
+  margin: 0;
+}
