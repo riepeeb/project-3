@@ -1,5 +1,6 @@
 {
     "globals": {
+      "Plotly": true,
       "data": true,
       "d3": true
     },
