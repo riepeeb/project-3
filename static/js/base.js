@@ -1,3 +1,17 @@
+// Inserting the data
+
+fetch('./API_Data/lodge_ovn.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+fetch('./API_Data/sum_visitors.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+fetch('./API_Data/yr_visitors.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
 const lightModeButton = d3.select("#light-mode")
 const darkModeButton = d3.select("#dark-mode")
 const root = document.querySelector(":root")
