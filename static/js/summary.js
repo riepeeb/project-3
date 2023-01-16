@@ -1,5 +1,5 @@
 const url = "./../API_Data/lodge_ovn.json"; 
-function plotCharts(aggregateFunction) {
+function plotCharts(aggregateFunction) 
     d3.json(url).then(data => {
         const metrics = [
             "backcountrycampers",
@@ -9,29 +9,87 @@ function plotCharts(aggregateFunction) {
             "rvcampers",
             "tentcampers",
             "year",
-        ]
-        const traces = metrics.map(metric => ({
-            x: data.map(_ => _["year"]),
-            y: data.map(_ => _[`${metric}_${aggregateFunction}`]),
-            type: "scatter",
-            name: toTitleCase(metric)
-        }))
+    ] })
+    const traces = metrics.map(metric => ({
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`${metric}_${aggregateFunction}`]),
+        type: "scatter",
+        name: toTitleCase(metric)
+    }))
 
-function getVisitorData(){
-    function DrawBubblePlot(sampleId) {
+    const summaryLinePlotLayout = {
+        title: `${aggregateFunctionLabel[aggregateFunction]} of Type of Yellowstone Visitors over the years`,
+        xaxis: {
+            title: "Year"
+        },
+        font: {
+            color: fontColor,
+        },
+        paper_bgcolor: backgroundColor,
+        plot_bgcolor: backgroundColor
+    }
+
+    Plotly.newPlot("summary-line-plot", traces, summaryLinePlotLayout, {responsive: true})
+
+    const campertypeLinePlotTrace = [{
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`backcountrycampers${aggregateFunction}`]),
+        type: "scatter",
+        name: "Backcountry"
+    }, {
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`concessionercampers_${aggregateFunction}`]),
+        type: "scatter",
+        name: "Concessioner Campers"
+    }, {
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`concessionerlodgers_${aggregateFunction}`]),
+        type: "scatter",
+        name: "Concessioner Lodgers"
+    }, {
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`miscellaneouscampers_${aggregateFunction}`]),
+        type: "scatter",
+        name: "Misc."
+    }, {
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`rvcampers_${aggregateFunction}`]),
+        type: "scatter",
+        name: "RV"
+    }, {
+        x: data.map(_ => _["year"]),
+        y: data.map(_ => _[`tentcampers_${aggregateFunction}`]),
+        type: "scatter",
+        name: "Tent"
+    
+    }]
+
+    function handleChange(event) {
+        const aggregateFunction = event.target.value
+        plotCharts(aggregateFunction)
+    }
+    
+    (() => {
+        plotCharts("mean")
+    })()
+    
+    function DrawBubblePlot(url){
     
         d3.json(url).then(data=> {
-    
+            
+            
+
+
             let samples = data.samples;
-            let resultArray = samples.filter(s => s.id == sampleId);
+            let resultArray = metrics.filter(s => s.id == sampleId);
             let result = resultArray[0]
     
-            let otu_ids = result.otu_ids;
+            let lodge_sum= sum.metrics;
             let otu_labels= result.otu_labels;
             let sample_values = result.sample_values;
     
             let bubbleData = {
-                x: otu_ids,
+                x: lodge_sum,
                 y: sample_values,
                 text: otu_labels,
                 mode: "markers",
