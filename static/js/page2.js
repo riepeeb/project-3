@@ -26,7 +26,16 @@
 // }
 
 // trying to put in bar chart with plotly
-var url = "./../API_Data/sum_visitors"
+
+// Inserting bar chart
+// function getData() {
+//     $.ajax({
+//         type: 'GET',
+//         url: "./../API_Data/sum_visitors",
+//         dataType: 'json'
+//     }).done(function (jsonData){
+//     });
+// }
 
 let month = Object.values(url.month);
 let nonrecreationhours = Object.values(url.nonrecreationhours);
@@ -39,6 +48,7 @@ let totalovernightstays = Object.values(url.totalovernightstays);
 let year = Object.values(url.year);
 
 let labels = Object.keys(url.month)
+
 
 function init() {
     let data =[{

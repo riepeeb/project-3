@@ -25,3 +25,27 @@ def sum_visitors():
 def lodge_ovn():
     results=engine.execute("select * from lodge_ovn;")
     return jsonify([dict(x) for x in results])
+
+@app.route("/api/yr_visitors_static.json")
+def yr_visitors_static():
+    file_path = "API_Data/yr_visitors.json"
+    data = JSON.load(open(file_path))
+    return data
+
+@app.route("/api/yr_visitors_static.json")
+def yr_visitors_static():
+    file_path = "API_Data/yr_visitors.json"
+    data = json.load(open(file_path))
+    return data
+
+@app.route("/page1")
+def page1():
+    file_path = "API_Data/yr_visitors.json"
+    data = json.load(open(file_path))
+    return render_template("PageOne.html", data=data)
+
+@app.route("/page2")
+def page2():
+    file_path = "API_Data/sum_visitors.json"
+    data = json.load(open(file_path))
+    return render_template("PageOne.html", data=data)
