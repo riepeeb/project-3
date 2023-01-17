@@ -1,6 +1,7 @@
 # import necessary libraries
 from flask import Flask, jsonify,  render_template
 from sqlalchemy import create_engine, inspect
+from flask import json
 
 from config import username, password, host, port, database_name
 
@@ -49,3 +50,4 @@ def page2():
     file_path = "API_Data/sum_visitors.json"
     data = json.load(open(file_path))
     return render_template("PageOne.html", data=data)
+
