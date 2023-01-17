@@ -49,13 +49,11 @@ def lodge_ovn_static():
 
 @app.route("/page1")
 def page1():
-    file_path = "API_Data/yr_visitors.json"
-    data = json.load(open(file_path))
-    return render_template("PageOne.html", data=data)
+    return render_template("PageOne.html")
 
 @app.route("/page2")
 def page2():
-    file_path = "API_Data/sum_visitors.json"
-    data = json.load(open(file_path))
-    return render_template("PageTwo.html", data=data)
+    return render_template("PageTwo.html")
 
+if __name__ == '__main__':
+    app.run(debug=True)

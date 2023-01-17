@@ -37,25 +37,24 @@
 //     });
 // }
 
-var url = "/API_Data/sum_visitors_static.json"
 
-let month = Object.values(url.month);
-let nonrecreationhours = Object.values(url.nonrecreationhours);
-let nonrecreationvisitors = Object.values(url.nonrecreationvisitors);
-let recreationhours = Object.values(url.recreationhours);
-let recreationvisitors = Object.values(url.recreationvisitors);
-let rvcampers = Object.values(url.rvcampers);
-let tentcampers = Object.values(url.tentcampers);
-let totalovernightstays = Object.values(url.totalovernightstays);
-let year = Object.values(url.year);
+var url = "http://127.0.0.1:5000//API_Data/sum_visitors_static.json"
+d3.json(url).then(data => {
+    console.log(data)
+    let month = data.map(_=> _["months"])
+    let year = data.map(_=> _["year"])
+    let nonrecreationhours = data.map(_=> _["nonrecreationhours"])
+    let nonrecreationvisitors = data.map(_=> _["nonrecreationvisitors"])
+    let recreationhours = data.map(_=> _["recreationhours"])
+    let recreationvisitors = data.map(_=> _["recreationvisitors"])
+    let rvcampers = data.map(_=> _["rvcampers"])
+    let tentcampers = data.map(_=> _["tentcampers"])
+    let totalovernightstays = data.map(_=> _["totalovernightstays"])
 
-let labels = Object.keys(url.month)
-
-
-function init() {
-    let data =[{
-        values: totalovernightstays,
-        labels: labels,
+// function init() {
+    let traces =[{
+        y: totalovernightstays,
+        x: year,
         type: "bar"
     }]
 
@@ -63,169 +62,169 @@ function init() {
         height: 600,
         width: 800
     };
-    Plotly.newPlot("bar", data, layout);
-}
-
+    Plotly.newPlot("bar", traces, layout);
+})
+// console.log(nonrecreationhours)
 
 // Rilee trying to put in a chart with chart.js
-var xmlhttp = new XMLHttpRequest();
-url = "/api/lodge_ovn_static.json";
-xmlhttp.open("GET",url, true);
-xmlhttp.send();
-xmlhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 200){
-        var data = JSON.parse(this.responseText);
-        //console.log(data);
-        var backcountrycampers = data.map(function(elem) {
-            return elem.backcountrycampers;
-        });
-        //console.log(months)
-        var concessionercampers = data.map(function(elem) {
-            return elem.concessionercampers;
-        });
-        var concessionerlodgers = data.map(function(elem) {
-            return elem.concessionerlodgers;
-        });
-        var miscellaneouscampers = data.map(function(elem) {
-            return elem.miscellaneouscampers;
-        });
-        var rvcampers = data.map(function(elem) {
-            return elem.rvcampers;
-        });
-        var tentcampers = data.map(function(elem) {
-            return elem.tentcampers;
-        });
-        var year = data.map(function(elem) {
-            return elem.year;
-        });
+// var xmlhttp = new XMLHttpRequest();
+// url = "/api/lodge_ovn_static.json";
+// xmlhttp.open("GET",url, true);
+// xmlhttp.send();
+// xmlhttp.onreadystatechange = function(){
+//     if(this.readyState == 4 && this.status == 200){
+//         var data = JSON.parse(this.responseText);
+//         //console.log(data);
+//         var backcountrycampers = data.map(function(elem) {
+//             return elem.backcountrycampers;
+//         });
+//         //console.log(months)
+//         var concessionercampers = data.map(function(elem) {
+//             return elem.concessionercampers;
+//         });
+//         var concessionerlodgers = data.map(function(elem) {
+//             return elem.concessionerlodgers;
+//         });
+//         var miscellaneouscampers = data.map(function(elem) {
+//             return elem.miscellaneouscampers;
+//         });
+//         var rvcampers = data.map(function(elem) {
+//             return elem.rvcampers;
+//         });
+//         var tentcampers = data.map(function(elem) {
+//             return elem.tentcampers;
+//         });
+//         var year = data.map(function(elem) {
+//             return elem.year;
+//         });
 
-        var ctx = document.getElementById('canvas').getContext('2d');
-        var myChart = new Chart (ctx, {
-            type: 'line',
-            data: {
-                labels: year,
-                datasets: [{
-                    label: 'Concessioner',
-                    data: concessionercampers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'red',
-                    borderWidth: 4
-                },
-                {
-                    label: 'Backcountry',
-                    data: backcountrycampers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'gray',
-                    borderWidth: 4
-                },
-                {
-                    label: 'Lodgers',
-                    data: concessionerlodgers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'blue',
-                    borderWidth: 4
-                },
-                {
-                    label: 'Misc. Campers',
-                    data: miscellaneouscampers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'green',
-                    borderWidth: 4
-                },
-                {
-                    label: 'RV',
-                    data: rvcampers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'purple',
-                    borderWidth: 4
-                },
-                {
-                    label: 'Tent',
-                    data: tentcampers,
-                    backgroundColor: 'transparent',
-                    borderColor: 'orange',
-                    borderWidth: 4
-                },
-            ]
-            },
-            options: {
-                elements: {
-                    line: {
-                        tension:0
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:  true
-                        }
-                    }]
-                }
-            }
+//         var ctx = document.getElementById('canvas').getContext('2d');
+//         var myChart = new Chart (ctx, {
+//             type: 'line',
+//             data: {
+//                 labels: year,
+//                 datasets: [{
+//                     label: 'Concessioner',
+//                     data: concessionercampers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'red',
+//                     borderWidth: 4
+//                 },
+//                 {
+//                     label: 'Backcountry',
+//                     data: backcountrycampers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'gray',
+//                     borderWidth: 4
+//                 },
+//                 {
+//                     label: 'Lodgers',
+//                     data: concessionerlodgers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'blue',
+//                     borderWidth: 4
+//                 },
+//                 {
+//                     label: 'Misc. Campers',
+//                     data: miscellaneouscampers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'green',
+//                     borderWidth: 4
+//                 },
+//                 {
+//                     label: 'RV',
+//                     data: rvcampers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'purple',
+//                     borderWidth: 4
+//                 },
+//                 {
+//                     label: 'Tent',
+//                     data: tentcampers,
+//                     backgroundColor: 'transparent',
+//                     borderColor: 'orange',
+//                     borderWidth: 4
+//                 },
+//             ]
+//             },
+//             options: {
+//                 elements: {
+//                     line: {
+//                         tension:0
+//                     }
+//                 },
+//                 scales: {
+//                     yAxes: [{
+//                         ticks: {
+//                             beginAtZero:  true
+//                         }
+//                     }]
+//                 }
+//             }
 
-        })
-    }
-}
+//         })
+//     }
+// }
 
 
 
 
 // Kirsten code that is not working below! 
 
-console.log('here1');
-main();
-let yearOne = 1904;
+// console.log('here1');
+// main();
+// let yearOne = 1904;
 
-function getRecreationData(){
-    const url = "./../API_Data/lodge_ovn.json"; 
-    console.log('here')
-    let returnValue = null;
-    d3.json(url).then(data=> {
-        let yearOVNList = [];
-        let itr = 0;
+// function getRecreationData(){
+//     const url = "./../API_Data/lodge_ovn.json"; 
+//     console.log('here')
+//     let returnValue = null;
+//     d3.json(url).then(data=> {
+//         let yearOVNList = [];
+//         let itr = 0;
 
-        //create a list of years
-        for(itr; itr < data.length;itr++){
-            yearOVNList.push(data[itr].year);
-        }
+//         //create a list of years
+//         for(itr; itr < data.length;itr++){
+//             yearOVNList.push(data[itr].year);
+//         }
 
-        //create first dropdown
-        let yrOVNDiv = document.getElementById("yearOVNDropDown");
-        let selectListYrOVN = document.createElement("select");
-        selectListYrOVN.setAttribute("id", "yrOVNDropDown");
-        selectListYrOVN.setAttribute("onchange","yrOVNOnChange(this.value)")
+//         //create first dropdown
+//         let yrOVNDiv = document.getElementById("yearOVNDropDown");
+//         let selectListYrOVN = document.createElement("select");
+//         selectListYrOVN.setAttribute("id", "yrOVNDropDown");
+//         selectListYrOVN.setAttribute("onchange","yrOVNOnChange(this.value)")
 
-        //Add label to dropdown
-        let yrOVNlabel = document.createElement("label");
-        yrOVNlabel.setAttribute("for","yearOVNDropDown");
-        yrOVNlabel.innerHTML = "Select a year: ";
-        yrOVNDiv.appendChild(yrOVNlabel);
-        yrOVNDiv.appendChild(selectListYrOVN);
+//         //Add label to dropdown
+//         let yrOVNlabel = document.createElement("label");
+//         yrOVNlabel.setAttribute("for","yearOVNDropDown");
+//         yrOVNlabel.innerHTML = "Select a year: ";
+//         yrOVNDiv.appendChild(yrOVNlabel);
+//         yrOVNDiv.appendChild(selectListYrOVN);
 
-        //Create and append the options
-        for (let i = 0; i < yearOVNList.length; i++) {
-            let option = document.createElement("option");
-            option.setAttribute("value", yearOVNList[i]);
-            if(i==0){
-                option.setAttribute("selected", "selected");
-            }
-            option.text = yearOVNList[i];
-            selectListYrOVN.appendChild(option);
-        }
+//         //Create and append the options
+//         for (let i = 0; i < yearOVNList.length; i++) {
+//             let option = document.createElement("option");
+//             option.setAttribute("value", yearOVNList[i]);
+//             if(i==0){
+//                 option.setAttribute("selected", "selected");
+//             }
+//             option.text = yearOVNList[i];
+//             selectListYrOVN.appendChild(option);
+//         }
 
-        // Create and append the options
-        for (let i = 0; i < yearOVNList.length; i++) {
-            let option = document.createElement("option");
-            option.setAttribute("value", yearOVNList[i]);
-            if(i==0){
-                option.setAttribute("selected", "selected");
-            }
-            option.text = yearOVNList[i];
-            selectListYrTwo.appendChild(option);
-        }
+//         // Create and append the options
+//         for (let i = 0; i < yearOVNList.length; i++) {
+//             let option = document.createElement("option");
+//             option.setAttribute("value", yearOVNList[i]);
+//             if(i==0){
+//                 option.setAttribute("selected", "selected");
+//             }
+//             option.text = yearOVNList[i];
+//             selectListYrTwo.appendChild(option);
+//         }
 
-    })
-}
+//     })
+// }
 
 // function yrOVNOnChange(year){
 //     console.log("Here1: ", year);
@@ -238,10 +237,9 @@ function getRecreationData(){
 // }
 
 
-function main(){
-    getRecreationData();
-}
-
+// function main(){
+//     getRecreationData();
+// }
 
 
 
