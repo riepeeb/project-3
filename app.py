@@ -30,7 +30,7 @@ def lodge_ovn():
 @app.route("/api/yr_visitors_static.json")
 def yr_visitors_static():
     file_path = "API_Data/yr_visitors.json"
-    data = JSON.load(open(file_path))
+    data = json.load(open(file_path))
     return data
 
 @app.route("/api/yr_visitors_static.json")
