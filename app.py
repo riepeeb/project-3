@@ -41,11 +41,11 @@ def sum_visitors_static():
     data = json.load(open(file_path))
     return data
 
-# @app.route("/api/lodge_ovn_static.json")
-# def lodge_ovn_static():
-#     file_path = "API_Data/lodge_ovn.json"
-#     data = json.load(open(file_path))
-#     return data
+@app.route("/api/lodge_ovn_static.json")
+def lodge_ovn_static():
+    file_path = "API_Data/lodge_ovn.json"
+    data = json.load(open(file_path))
+    return data
 
 @app.route("/page1")
 def page1():

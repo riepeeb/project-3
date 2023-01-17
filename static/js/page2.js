@@ -69,7 +69,7 @@ function init() {
 
 // Rilee trying to put in a chart with chart.js
 var xmlhttp = new XMLHttpRequest();
-var url = "./../API_Data/lodge_ovn.json";
+url = "/api/lodge_ovn_static.json";
 xmlhttp.open("GET",url, true);
 xmlhttp.send();
 xmlhttp.onreadystatechange = function(){
