@@ -26,15 +26,33 @@
 // }
 
 // trying to put in bar chart with plotly
-let month = []
-let nonrecreationhours =[]
-let nonrecreationvisitors =[]
-let recreationhours = []
-let recreationvisitors = []
-let rvcampers = []
-let tentcampers = []
-let totalovernightstays = []
-let year = []
+var url = "./../API_Data/sum_visitors"
+
+let month = Object.values(url.month);
+let nonrecreationhours = Object.values(url.nonrecreationhours);
+let nonrecreationvisitors = Object.values(url.nonrecreationvisitors);
+let recreationhours = Object.values(url.recreationhours);
+let recreationvisitors = Object.values(url.recreationvisitors);
+let rvcampers = Object.values(url.rvcampers);
+let tentcampers = Object.values(url.tentcampers);
+let totalovernightstays = Object.values(url.totalovernightstays);
+let year = Object.values(url.year);
+
+let labels = Object.keys(url.month)
+
+function init() {
+    let data =[{
+        values: totalovernightstays,
+        labels: labels,
+        type: "bar"
+    }]
+
+    let layout = {
+        height: 600,
+        width: 800
+    };
+    Plotly.newPlot("bar", data, layout);
+}
 
 
 // Rilee trying to put in a chart with chart.js
