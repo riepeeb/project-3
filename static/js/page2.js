@@ -25,7 +25,19 @@
 // });
 // }
 
-// Rilee trying to put in a chart
+// trying to put in bar chart with plotly
+let month = []
+let nonrecreationhours =[]
+let nonrecreationvisitors =[]
+let recreationhours = []
+let recreationvisitors = []
+let rvcampers = []
+let tentcampers = []
+let totalovernightstays = []
+let year = []
+
+
+// Rilee trying to put in a chart with chart.js
 var xmlhttp = new XMLHttpRequest();
 var url = "./../API_Data/lodge_ovn.json";
 xmlhttp.open("GET",url, true);
@@ -124,6 +136,8 @@ xmlhttp.onreadystatechange = function(){
         })
     }
 }
+
+
 
 
 // Kirsten code that is not working below! 

@@ -6,10 +6,8 @@
     },
     "rules": {
       "arrow-body-style": ["error", "never"]
-    }
-  }
-
-  {
+    },
+    
     "search.exclude": {
       "**/node_modules": true,
       "**/es": true,
