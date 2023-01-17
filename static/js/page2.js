@@ -31,7 +31,7 @@ var url = "./../API_Data/lodge_ovn.json";
 xmlhttp.open("GET",url, true);
 xmlhttp.send();
 xmlhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 200){
+    if(this.readyState == 4 && this.status == 1000){
         var data = JSON.parse(this.responseText);
         //console.log(data);
         var backcountry = data.map(function(elem) {
