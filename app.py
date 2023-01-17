@@ -27,15 +27,17 @@ def lodge_ovn():
     results=engine.execute("select * from lodge_ovn;")
     return jsonify([dict(x) for x in results])
 
-@app.route("/api/yr_visitors_static.json")
+# Adding in routes for the data to be read by JSON
+
+@app.route("/API_Data/yr_visitors_static.json")
 def yr_visitors_static():
-    file_path = "API_Data/yr_visitors.json"
+    file_path = "API_Data\yr_visitors.json"
     data = json.load(open(file_path))
     return data
 
-@app.route("/api/sum_visitors_static.json")
+@app.route("/API_Data/sum_visitors_static.json")
 def sum_visitors_static():
-    file_path = "API_Data/sum_visitors.json"
+    file_path = "API_Data\sum_visitors.json"
     data = json.load(open(file_path))
     return data
 
