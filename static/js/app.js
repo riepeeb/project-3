@@ -4,7 +4,7 @@ let yearOne = 1904;
 let yearTwo = 1904;
 
 function getVisitorData(){
-    const url = "./../API_Data/yr_visitors_static.json"; 
+    const url = "./../API_Data/yr_visitors.json"; 
     console.log('here')
     let returnValue = null;
     d3.json(url).then(data=> {
