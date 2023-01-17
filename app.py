@@ -33,11 +33,17 @@ def yr_visitors_static():
     data = json.load(open(file_path))
     return data
 
-@app.route("/api/yr_visitors_static.json")
-def yr_visitors_static():
-    file_path = "API_Data/yr_visitors.json"
+@app.route("/api/sum_visitors_static.json")
+def sum_visitors_static():
+    file_path = "API_Data/sum_visitors.json"
     data = json.load(open(file_path))
     return data
+
+# @app.route("/api/lodge_ovn_static.json")
+# def lodge_ovn_static():
+#     file_path = "API_Data/lodge_ovn.json"
+#     data = json.load(open(file_path))
+#     return data
 
 @app.route("/page1")
 def page1():
@@ -49,5 +55,5 @@ def page1():
 def page2():
     file_path = "API_Data/sum_visitors.json"
     data = json.load(open(file_path))
-    return render_template("PageOne.html", data=data)
+    return render_template("PageTwo.html", data=data)
 

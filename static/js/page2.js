@@ -37,6 +37,8 @@
 //     });
 // }
 
+var url = "./../API_Data/sum_visitors_static.json"
+
 let month = Object.values(url.month);
 let nonrecreationhours = Object.values(url.nonrecreationhours);
 let nonrecreationvisitors = Object.values(url.nonrecreationvisitors);
