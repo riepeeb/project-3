@@ -31,10 +31,10 @@ var url = "./../API_Data/lodge_ovn.json";
 xmlhttp.open("GET",url, true);
 xmlhttp.send();
 xmlhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 1000){
+    if(this.readyState == 4 && this.status == 200){
         var data = JSON.parse(this.responseText);
         //console.log(data);
-        var backcountry = data.map(function(elem) {
+        var backcountrycampers = data.map(function(elem) {
             return elem.backcountrycampers;
         });
         //console.log(months)
@@ -59,7 +59,7 @@ xmlhttp.onreadystatechange = function(){
 
         var ctx = document.getElementById('canvas').getContext('2d');
         var myChart = new Chart (ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: year,
                 datasets: [{
@@ -67,6 +67,13 @@ xmlhttp.onreadystatechange = function(){
                     data: concessionercampers,
                     backgroundColor: 'transparent',
                     borderColor: 'red',
+                    borderWidth: 4
+                },
+                {
+                    label: 'Backcountry',
+                    data: backcountrycampers,
+                    backgroundColor: 'transparent',
+                    borderColor: 'gray',
                     borderWidth: 4
                 },
                 {
