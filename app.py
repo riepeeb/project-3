@@ -3,13 +3,13 @@ from flask import Flask, jsonify,  render_template
 from sqlalchemy import create_engine, inspect
 from flask import json
 
-# from config import username, password, host, port, database_name
+from config import username, password, host, port, database_name
 
 app = Flask(__name__)
-# engine = create_engine(f"postgresql://{username}:{password}@{host}:{port}/{database_name}")
+engine = create_engine(f"postgresql://{username}:{password}@{host}:{port}/{database_name}")
 
-# create instance of Flask app
-#appusername = Flask(__name__)
+create instance of Flask app
+appusername = Flask(__name__)
 
 @app.route("/api/yr_visitors.json")
 def yr_visitors():
