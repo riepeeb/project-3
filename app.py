@@ -5,7 +5,7 @@ from flask import json
 
 # from config import username, password, host, port, database_name
 
-# app = Flask(__name__)
+app = Flask(__name__)
 # engine = create_engine(f"postgresql://{username}:{password}@{host}:{port}/{database_name}")
 
 # create instance of Flask app
