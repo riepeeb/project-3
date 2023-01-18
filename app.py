@@ -46,6 +46,10 @@ def lodge_ovn_static():
     data = json.load(open(file_path))
     return data
 
+@app.route("/")
+def page0():
+    return render_template("index.html")
+
 @app.route("/page1")
 def page1():
     return render_template("PageOne.html")
