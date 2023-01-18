@@ -8,7 +8,7 @@ from config import username, password, host, port, database_name
 app = Flask(__name__)
 engine = create_engine(f"postgresql://{username}:{password}@{host}:{port}/{database_name}")
 
-create instance of Flask app
+# create instance of Flask app
 appusername = Flask(__name__)
 
 @app.route("/api/yr_visitors.json")

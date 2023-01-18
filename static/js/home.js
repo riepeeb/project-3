@@ -10,7 +10,7 @@
         container: document.querySelector('body'),
 
         //Resize?
-        resize: true;
+        resize: true,
 
         isMobile: window.matchMedia('(max-width: 500px)').matches,
         
